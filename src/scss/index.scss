@@ -3,10 +3,151 @@
     i {
         color: white;
     }
+    main {
+        .container {
+            margin-top: 5vh;
+            width: 100%;
+            display: flex;
+            justify-content: center; // Ortalamak için
+            align-items: center; // Ortalamak için
+            .div-row {
+                display: flex;
+                align-items: center;
+                margin-left: calc(-25% + -40px);
+                select {
+                    margin-right: 10px; // İstenilen boşluğu ayarlayabilirsiniz
+                    margin-left: 10px;
+                    padding: 10%;
+                    padding-left: 20%;
+                    padding-right: 20%;
+                    border-radius: 30px;
+                    outline: none;
+                    background-color: black;
+                    border: 1px solid black;
+                    color: white;
+                }
+                i {
+                    margin: 0 10px; // İstenilen boşluğu ayarlayabilirsiniz
+                }
+            }
+        }
+        .amount-div {
+            margin-top: 2vh;
+            input {
+                background-color: black;
+                border: none;
+                color: white;
+                outline: none;
+                padding: 4%;
+                width: 70%;
+                text-align: center;
+                border-radius: 100px;
+                margin-left: 15%;
+            }
+            button {
+                margin-top: 2vh;
+                background-color: white;
+                border: none;
+                color: black;
+                outline: none;
+                padding: 4%;
+                width: 70%;
+                text-align: center;
+                border-radius: 100px;
+                margin-left: 15%;
+            }
+        }
+        h2 {
+            margin-top: 2vh;
+            margin-bottom: 2vh;
+            color: white;
+            text-align: center;
+        }
+        .others {
+            background-color: black;
+            width: 80%;
+            height: 45vh;
+            border-radius: 30px;
+            margin-left: 10%;
+            overflow: auto;
+        }
+    }
 }
+
 .light {
-    background-color: white;
+    background-color: rgb(214, 214, 214);
+
     i {
         color: black;
+    }
+
+    main {
+        .container {
+            width: 100%;
+            margin-top: 5vh;
+            display: flex;
+            justify-content: center; // Ortalamak için
+            align-items: center; // Ortalamak için
+            .div-row {
+                display: flex;
+                align-items: center;
+                margin-left: calc(-25% + -40px);
+                select {
+                    margin-right: 10px; // İstenilen boşluğu ayarlayabilirsiniz
+                    margin-left: 10px;
+                    padding: 10%;
+                    padding-left: 20%;
+                    padding-right: 20%;
+                    border-radius: 30px;
+                    outline: none;
+                    background-color: white;
+                    border: 1px solid white;
+                    color: black;
+                }
+                i {
+                    margin: 0 10px; // İstenilen boşluğu ayarlayabilirsiniz
+                }
+            }
+        }
+        .amount-div {
+            margin-top: 2vh;
+            input {
+                background-color: white;
+                border: none;
+                color: black;
+                outline: none;
+                padding: 4%;
+                width: 70%;
+                text-align: center;
+                border-radius: 100px;
+                margin-left: 15%;
+            }
+            button {
+                margin-top: 2vh;
+                background-color: black;
+                border: none;
+                color: white;
+                outline: none;
+                padding: 4%;
+                width: 70%;
+                text-align: center;
+                border-radius: 100px;
+                margin-left: 15%;
+            }
+        }
+    }
+    h2 {
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+        color: black;
+        text-align: center;
+    }
+    .others {
+        background-color: white;
+        width: 80%;
+        height: 45vh;
+        border-radius: 30px;
+        margin-left: 10%;
+        overflow: auto;
     }
 }

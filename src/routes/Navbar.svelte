@@ -26,7 +26,7 @@
 <style>
     i {
         color: white;
-        font-size: 32px;
+        font-size: 27px;
         float: right;
         margin-top: 2vh;
         display: block;
