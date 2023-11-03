@@ -163,19 +163,19 @@
 		ZAR: { name: 'South African Rand', symbol: 'ZAR' },
 		ZMK: { name: 'Zambian Kwacha (1968–2012)', symbol: 'ZMK' },
 		ZMW: { name: 'Zambian Kwacha', symbol: 'ZMW' },
-		ZWL: { name: 'Zimbabwean Dollar (2009)', symbol: 'ZWL' },
+		ZWL: { name: 'Zimbabwean Dollar (2009)', symbol: 'ZWL' }
 	};
-	let currencyValue1 = '';
-	let currencyValue2 = '';
+	let currencyValue1 = 'USD';
+	let currencyValue2 = 'EUR';
 	let amountValue = '';
 	let newValue = '';
-	let amountArray = [];
+	let amountSet = {};
 
-	function transCurrency() {
+	async function transCurrency() {
 		const temp = currencyValue1;
 		currencyValue1 = currencyValue2;
 		currencyValue2 = temp;
-        getValues()
+		await getValues();
 	}
 
 	async function convertCurrency() {
@@ -186,7 +186,7 @@
 		const amount = amountValue;
 
 		// Axios ile GET isteği gönderme
-		axios
+		await axios
 			.get(url, {
 				params: {
 					want,
@@ -199,7 +199,6 @@
 			})
 			.then((response) => {
 				// İstek başarılıysa burası çalışır
-				console.log(response.data);
 				newValue = response.data.new_amount;
 			})
 			.catch((error) => {
@@ -218,7 +217,7 @@
 			const have = currencyValue1;
 			const want = currencyList[i];
 
-			axios
+			await axios
 				.get(url, {
 					params: {
 						want,
@@ -231,21 +230,20 @@
 				})
 				.then((response) => {
 					// İstek başarılıysa burası çalışır
-					console.log(`Dönüşüm (${have} -> ${want}): ${response.data.new_amount}`);
-					amountArray.push(response.data.new_amount);
+					//console.log(`Dönüşüm (${have} -> ${want}): ${response.data.new_amount}`);
+					amountSet[want] = response.data.new_amount;
 				})
 				.catch((error) => {
 					// İstek hatalıysa burası çalışır
 					console.error(`Dönüşüm (${have} -> ${want}) hatası:`, error);
 				});
 		}
-        console.log(amountArray);
 	}
 
 	// Fonksiyonu çağırarak döngüyü başlatın
-	function getValues() {
-		convertCurrency();
-		convertCurrencies();
+	async function getValues() {
+		await convertCurrency();
+		await convertCurrencies();
 	}
 </script>
 
@@ -274,17 +272,19 @@
 		<br />
 		<button on:click={getValues}>GET</button>
 	</div>
-	<h2>{amountValue} {currencyValue1} {(' =', newValue)} {currencyValue2}</h2>
+	<h2>{amountValue} {currencyValue1} = { newValue } {currencyValue2}</h2>
 	<div class="others">
 		<ul>
-			{#each currencyList as item}
+			{#each Object.keys(amountSet) as indis}
 				<li>
-					<span>{amountValue}</span>
-					<span>{currencyValue1}</span>
-					{#each amountArray as indis}
+					<span>
+						<span>{amountValue}</span>
+						<span>{currencyValue1}</span>
+					</span>
+					<span>
+						<span>{amountSet[indis]}</span>
 						<span>{indis}</span>
-					{/each}
-					<span>{item}</span>
+					</span>
 				</li>
 			{/each}
 		</ul>

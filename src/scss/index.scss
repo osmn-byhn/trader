@@ -71,6 +71,17 @@
             border-radius: 30px;
             margin-left: 10%;
             overflow: auto;
+            color: white;
+            ul {
+                padding: 5%;
+
+                li {
+                    list-style: none;
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 21px;
+                }
+            }
         }
     }
 }
@@ -150,5 +161,17 @@
         border-radius: 30px;
         margin-left: 10%;
         overflow: auto;
+        color: black;
+        ul {
+            padding: 5%;
+
+            li {
+                list-style: none;
+                display: flex;
+                justify-content: space-between;
+                font-size: 21px;
+            }
+        }
     }
+
 }
