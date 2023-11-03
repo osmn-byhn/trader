@@ -1,7 +1,5 @@
 <script>
     import Navbar from "./Navbar.svelte";
-    console.log("Fuck you")
-
     const currency = {
         "ADP": {"name": "Andorran Peseta", "symbol": "ADP"},
         "AED": {"name": "United Arab Emirates Dirham", "symbol": "AED"},
@@ -300,6 +298,23 @@
         "ZWL": {"name": "Zimbabwean Dollar (2009)", "symbol": "ZWL"},
         "ZWR": {"name": "Zimbabwean Dollar (2008)", "symbol": "ZWR"}
     }
+    let currencyValue1 = ''
+    let currencyValue2 = ''
+    let amountValue = ''
+
+    function getValue() {
+        console.log(currencyValue1);
+        console.log(currencyValue2);
+        console.log(amountValue);
+    }
+    function transCurrency() {
+  // Değişkenlerin değerlerini birbirleriyle takas et
+  const temp = currencyValue1;
+  currencyValue1 = currencyValue2;
+  currencyValue2 = temp;
+
+  console.log("Değişim gerçekleşti.");
+}
 </script>
 
 <Navbar />
@@ -307,13 +322,15 @@
     <main>
         <div class="container ">
             <div class="div-row">
-                <select class="" id="selectOptions" >
+                <select bind:value={currencyValue1} class="" id="selectOptions" >
                     {#each Object.keys(currency) as item}
                         <option value="{item}">{item}</option>
                     {/each}
                 </select>
-                <i class="bi bi-arrow-left-right"></i>
-                <select class="" id="selectOptions" >
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <!-- svelte-ignore a11y-no-static-element-interactions -->
+                <i class="bi bi-arrow-left-right" on:click={transCurrency}></i>
+                <select bind:value={currencyValue2} class="" id="selectOptions" >
                     {#each Object.keys(currency) as item}
                         <option value="{item}">{item}</option>
                     {/each}
@@ -321,13 +338,13 @@
             </div>
         </div>
         <div class="amount-div">
-            <input type="tel" name="" id="" placeholder="Amount">
+            <input type="tel" name="" id="" placeholder="Amount"  bind:value={amountValue}>
             <br>
-            <button>GET</button>
+            <button on:click={getValue}>GET</button>
         </div>
         <h2>1 TRY = 31 USD</h2>
         <div class="others">
-            
+
         </div>
     </main>
     
