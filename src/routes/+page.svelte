@@ -1,7 +1,15 @@
 <script>
-        console.log("Fuck you")
+    import Navbar from "./Navbar.svelte";
+    console.log("Fuck you")
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-<b>FUCK YOU</b>
+<Navbar />
+<br><br><br><br>
+<div>
+    
+</div>
+
+
+<style lang="sass">
+    @import '../scss/index.scss';
+</style>
