@@ -175,3 +175,13 @@
     }
 
 }
+@media (min-width:800px) {
+    .main {
+        .container{
+            display: flex;
+            justify-content: space-around;
+        }
+        
+    }
+
+}

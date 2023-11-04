@@ -276,16 +276,43 @@
 	<div class="others">
 		<ul>
 			{#each Object.keys(amountSet) as indis}
-				<li>
-					<span>
-						<span>{amountValue}</span>
-						<span>{currencyValue1}</span>
-					</span>
-					<span>
-						<span>{amountSet[indis]}</span>
-						<span>{indis}</span>
-					</span>
-				</li>
+			{#if amountValue > amountSet[indis]}
+			<li style="color: red;">
+				<span>
+					<span>{amountValue}</span>
+					<span>{currencyValue1}</span>
+				</span>
+				<span>
+					<span>{amountSet[indis]}</span>
+					<span>{indis}</span>
+				</span>
+			</li>			
+			{/if}
+			{#if  amountValue < amountSet[indis]}
+			<li style="color: green;">
+				<span>
+					<span>{amountValue}</span>
+					<span>{currencyValue1}</span>
+				</span>
+				<span>
+					<span>{amountSet[indis]}</span>
+					<span>{indis}</span>
+				</span>
+			</li>
+			{/if}
+			{#if  amountValue === amountSet[indis]}
+			<li style="color: white;">
+				<span>
+					<span>{amountValue}</span>
+					<span>{currencyValue1}</span>
+				</span>
+				<span>
+					<span>{amountSet[indis]}</span>
+					<span>{indis}</span>
+				</span>
+			</li>
+			{/if}
+				
 			{/each}
 		</ul>
 	</div>
